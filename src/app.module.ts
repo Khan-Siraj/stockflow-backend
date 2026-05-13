@@ -6,9 +6,17 @@ import { AuthModule } from './auth/auth.module';
 import { ProductsModule } from './products/products.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [PrismaModule, AuthModule, ProductsModule, DashboardModule, SettingsModule],
+  imports: [
+    PrismaModule,
+    AuthModule,
+    ProductsModule,
+    DashboardModule,
+    SettingsModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

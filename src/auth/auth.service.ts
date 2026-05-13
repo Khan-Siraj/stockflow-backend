@@ -73,10 +73,13 @@ export class AuthService {
 
   generateToken(user: any) {
     return {
-      access_token: this.jwtService.sign({
-        userId: user.id,
-        organizationId: user.organizationId,
-      }),
+      access_token: this.jwtService.sign(
+        {
+          userId: user.id,
+          organizationId: user.organizationId,
+        },
+        { expiresIn: '1h', secret: process.env.JWT_SECRET },
+      ),
     };
   }
 }
