@@ -55,6 +55,7 @@ model Product {
   updatedAt DateTime @updatedAt
 
   @@unique([organizationId, sku])
+  @@unique([id, organizationId])
 }
 
 model Setting {
